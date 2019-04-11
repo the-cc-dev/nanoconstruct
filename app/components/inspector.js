@@ -1,12 +1,15 @@
 var html = require('choo/html')
 var { emit } = require('choo-shortemit')
+var toolbar = require('./toolbar')
 
 module.exports = inspector
 
-function inspector (componentRenderer, selected, events) {
+function inspector (componentRenderer, selected) {
+  var el = selected ? renderComponent() : message('← Select a component to inspect.')
   return html`
-    <div class="p1 1">
-      ${selected ? renderComponent() : message('← Select a component to inspect.')}
+    <div class="p1 1 pr">
+      ${el}
+      ${selected && toolbar(selected, el)}
     </div>
   `
 
@@ -20,11 +23,7 @@ function inspector (componentRenderer, selected, events) {
       }
     }
 
-    var el = html`${componentRenderer()}`
-    // pass it to test runner
-    emit(events.TEST, selected, el)
-
-    return el
+    return componentRenderer()
   }
 
   function message (string) {

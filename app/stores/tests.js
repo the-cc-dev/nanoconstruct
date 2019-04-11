@@ -12,10 +12,42 @@ function tests (state, emitter) {
       run(componentName, el, component.test)
     }
   })
+
+  function run (name, el, testFunction) {
+    var success = []
+    var failure = []
+
+    var resetLog = mockLog(function (line) {
+      if (line.indexOf('ok') === 0) {
+        success.push(line.replace('ok ', ''))
+      } else if (line.indexOf('not ok') === 0) {
+        failure.push(line.replace('not ok ', ''))
+      }
+    })
+
+    test(name, (t) => {
+      testFunction(t, el)
+    })
+
+    test.onFinish(function () {
+      resetLog()
+
+      failure.map(txt => {
+        console.log('FAIL: ' + txt)
+      })
+    })
+  }
 }
 
-function run (name, el, testFunction) {
-  test(name, (t) => {
-    testFunction(t, el)
-  })
+function mockLog (handler, pass) {
+  var _olog = console.log
+
+  console.log = function () {
+    handler(...arguments)
+    if (pass) _olog.bind(console, arguments)
+  }
+
+  return function () {
+    console.log = _olog
+  }
 }

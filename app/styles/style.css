@@ -16,7 +16,7 @@ body {
   text-decoration: none;
 }
 
-.nano a:not(.black):hover { background: #f5f5f5 }
+.nano a.hover:not(.black):hover { background: #f5f5f5 }
 
 .black {background:black}
 .tcwhite {color:white}
@@ -25,6 +25,7 @@ body {
 .lh {line-height: 1.8}
 
 .f1 { font-size: 2rem }
+.f6{font-size:.875rem}
 
 .h100vh {height: 100vh}
 .h100 {height: 100%}
@@ -32,15 +33,23 @@ body {
 .w250px {width: 250px}
 .\31{width:100.000%}
 
+.l0{left:0}
+.b0{bottom:0}
+
 .db{display:block}
 .dib{display:inline-block}
 .dn{display:none}
 .dx{display:flex}
 
-.p1 {padding: 1.5rem}
-.px1 {padding-left: 1.5rem;padding-right:1.5rem}
+.pr{position:relative}
+.pa{position:absolute}
+
+.p0-5{padding:0.75rem}
+.p1 {padding:1.5rem}
+.px1 {padding-left:1.5rem;padding-right:1.5rem}
 .py1 {padding-top:1.5rem;padding-bottom:1.5rem}
 
+.bt {border-top-style: solid; border-top-width: 1px}
 .br {border-right-style: solid; border-right-width: 1px}
 
 .center {align-items: center; justify-content: center}

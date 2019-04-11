@@ -19,12 +19,12 @@ function view (state, emit) {
     <body>
       <div class="dx h100vh">
         ${renderSidebar()}
-        ${inspector(state.nanoconstruct.components[selected], selected, state.events)}
+        ${inspector(state.nanoconstruct.components[selected], selected)}
       </div>
     </body>
   `
 
-  function renderSidebar() {
+  function renderSidebar () {
     return state.nanoconstruct.componentsCount > 1 ?
       sidebar(Object.keys(state.nanoconstruct.components), selected) :
       null

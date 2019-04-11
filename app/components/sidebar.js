@@ -11,7 +11,7 @@ function sidebar (components, selected) {
 
   function componentLink (name) {
     return html`
-      <a href="/${name}" class="db px1 ${selected === name ? 'black tcwhite' : 'tcblack'}">${name}</a>
+      <a href="/${name}" class="db px1 hover ${selected === name ? 'black tcwhite' : 'tcblack'}">${name}</a>
     `
   }
 }

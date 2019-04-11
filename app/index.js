@@ -14,6 +14,7 @@ app.use(devtools({
 app.use(require('choo-shortemit'))
 app.use(require('./stores/components'))
 app.use(require('./stores/tests'))
+app.use(require('./stores/events-shortcut'))
 
 app.route('/:component', require('./views/main'))
 
